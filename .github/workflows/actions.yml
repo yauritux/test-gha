@@ -14,6 +14,7 @@ jobs:
           echo $GITHUB_REPOSITORY
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
+          docker -v
       - name: Checkout
         uses: actions/checkout@v1.0.0
       - name: List Files After Checkout
