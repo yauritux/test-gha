@@ -2,11 +2,14 @@ name: Actions Workflow
 
 on:
   repository_dispatch:
+    types: ["build"]
 
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest    
     steps:
+      - name: Get Payload
+        run: echo ${{ github.event.client_payload.env }}
       - name: List Files Before Checkout
         run: |
           pwd
