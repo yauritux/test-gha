@@ -2,7 +2,7 @@ name: Actions Workflow
 
 on:
   schedule:
-    - cron: "0/5 * * * *"
+    - cron: "* * * * *"
 
 jobs:
   run-github-actions:
@@ -17,12 +17,8 @@ jobs:
           echo $GITHUB_WORKSPACE
           echo "${{ github.token }}"
           docker -v
-        with:
-          ref: main
       - name: Checkout
         uses: actions/checkout@v1.0.0
-        with:
-          ref: main
       - name: List Files After Checkout
         run: |
           ls -a
@@ -31,8 +27,5 @@ jobs:
         uses: actions/hello-world-javascript-action@v1.1
         with:
           who-to-greet: Yauri
-          ref: main
       - name: Log Greeting Time
         run: echo "${{ steps.greet.outputs.time }}"
-        with:
-          ref: main
